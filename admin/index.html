@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin — Dapur Kita</title><link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div class="login-wrap" id="loginView">
+  <form id="loginForm" class="login-card">
+    <div class="brand-mark">DK</div><h1>Dapur Kita</h1><p>Masuk ke panel administrator</p>
+    <label>Email admin<input name="username" type="email" autocomplete="username" placeholder="adminresto@gmail.com" required maxlength="100"></label>
+    <label>Password<input name="password" type="password" autocomplete="current-password" required maxlength="200"></label>
+    <button class="primary" type="submit">Masuk</button><div id="loginError" class="error"></div>
+  </form>
+</div>
+<div id="appView" class="shell hidden">
+  <aside class="sidebar"><div class="brand"><span class="brand-mark small">DK</span><div><b>Dapur Kita</b><small>Admin Panel</small></div></div>
+    <nav><button class="nav active" data-tab="dashboard">Ringkasan</button><button class="nav" data-tab="menu">Kelola Menu</button><button class="nav" data-tab="orders">Pesanan</button></nav>
+    <button id="logoutBtn" class="logout">Keluar</button>
+  </aside>
+  <main class="main">
+    <header><div><p class="eyebrow">MANAJEMEN RESTORAN</p><h1 id="pageTitle">Ringkasan</h1></div><span id="adminName" class="admin-chip">Admin</span></header>
+    <section id="dashboardTab" class="tab">
+      <div class="stats"><article><span>Total Menu</span><strong id="statMenu">—</strong></article><article><span>Total Pesanan</span><strong id="statOrders">—</strong></article><article><span>Pesanan Aktif</span><strong id="statPending">—</strong></article><article><span>Pendapatan Lunas</span><strong id="statRevenue">—</strong></article></div>
+      <div class="panel"><div class="panel-head"><div><h2>Pesanan terbaru</h2><p>Pantau transaksi masuk dan statusnya.</p></div><button class="secondary" id="goOrders">Lihat semua</button></div><div id="recentOrders"></div></div>
+    </section>
+    <section id="menuTab" class="tab hidden">
+      <div class="panel"><div class="panel-head"><div><h2 id="menuFormTitle">Tambah menu</h2><p>Atur harga, kategori, foto, dan stok.</p></div></div>
+      <form id="menuForm" class="menu-form">
+        <input type="hidden" name="id"><input type="hidden" name="image_key">
+        <label>Nama menu<input name="name" required maxlength="120"></label>
+        <label>Kategori<input name="category" value="Makanan" required maxlength="60"></label>
+        <label>Harga (Rp)<input name="price" type="number" min="0" step="1" required></label>
+        <label>Stok<input name="stock" type="number" min="0" step="1" value="0" required></label>
+        <label class="wide">Deskripsi<textarea name="description" rows="2" maxlength="1000"></textarea></label>
+        <label class="wide">Foto menu (JPG/PNG/WebP, maks 4 MB)<input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp"><small id="imageInfo">Belum ada foto baru dipilih.</small></label>
+        <label class="check"><input name="is_available" type="checkbox" checked> Tersedia untuk dipesan</label>
+        <div class="wide actions"><button class="primary" type="submit">Simpan menu</button><button class="secondary" type="button" id="cancelEdit">Reset</button></div>
+      </form><div id="menuMessage" class="message"></div></div>
+      <div class="panel"><div class="panel-head"><div><h2>Daftar menu</h2><p>Perbarui data atau hapus menu.</p></div><input id="menuSearch" class="search" placeholder="Cari menu..."></div><div id="menuTable"></div></div>
+    </section>
+    <section id="ordersTab" class="tab hidden"><div class="panel"><div class="panel-head"><div><h2>Semua pesanan</h2><p>Ubah status pesanan dan pembayaran.</p></div><input id="orderSearch" class="search" placeholder="Cari kode/nama..."></div><div id="ordersTable"></div></div></section>
+    <div id="globalMessage" class="toast" role="status"></div>
+  </main>
+</div>
+<script src="./app.js" defer></script>
+</body></html>

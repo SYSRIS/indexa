@@ -1,0 +1,20 @@
+name = "dapur-kita"
+compatibility_date = "2026-10-23"
+pages_build_output_dir = "public"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "dapur-kita-db"
+database_id = "GANTI_DENGAN_DATABASE_ID"
+
+[[r2_buckets]]
+binding = "MENU_IMAGES"
+bucket_name = "dapur-kita-images"
+
+# Set these as Cloudflare secrets, not in this file:
+# ADMIN_USERNAME
+# ADMIN_PASSWORD_HASH
+# SESSION_SECRET
+# WHATSAPP_TOKEN (optional)
+# WHATSAPP_PHONE_NUMBER_ID (optional)
+# WHATSAPP_TO (optional, destination number in international format)
